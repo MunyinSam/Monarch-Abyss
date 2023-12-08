@@ -1,0 +1,4 @@
+repository "Hamster Project@Munyin@cloud"
+  path "/"
+    br "/main"
+    co "/main"
