@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/First Scene.unity
+    path: Assets/Animation/Prefabs/Scenes/First Scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Animation/Prefabs/Scenes/Dungeon.unity
+    guid: 31edffc1510c1a941901d920e12d3573
   m_configObjects: {}
