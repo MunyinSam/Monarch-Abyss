@@ -33,14 +33,14 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth > 0)
         {
-            anim.SetTrigger("hurt");
+            //anim.SetTrigger("hurt");
             //iframes
             StartCoroutine(Invunerability()); // must call like this 
         }
         else
         {
 
-            anim.SetTrigger("Playerdeath");
+            //anim.SetTrigger("Playerdeath");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
 
