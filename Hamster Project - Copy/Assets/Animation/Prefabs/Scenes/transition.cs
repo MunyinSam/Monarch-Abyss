@@ -8,7 +8,7 @@ public class transition : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            SceneManager.LoadScene("Dungeon");
+            SceneManager.LoadScene("RealDungeon");
         }
     }
 }
