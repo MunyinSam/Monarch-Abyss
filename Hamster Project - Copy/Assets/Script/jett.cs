@@ -11,7 +11,7 @@ public class Jett : MonoBehaviour
     [SerializeField] private float fuel = 100f;
     [SerializeField] private float fuelBurnrate = 40f;
     [SerializeField] private float fuelRefillrate = 12f;
-    private Animator anim;
+    // private Animator anim;
     private float currentFuel;
     private bool haveFuel = true;
     private Rigidbody2D rb;
@@ -20,7 +20,7 @@ public class Jett : MonoBehaviour
     void Start()
     {
         coll = GetComponent<BoxCollider2D>();
-        anim = GetComponent<Animator>();
+        // anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         currentFuel = fuel;
 
@@ -36,12 +36,12 @@ public class Jett : MonoBehaviour
             print("Flying");
             rb.velocity = new Vector2(rb.velocity.x, jetpackForce); // get the access
             currentFuel -= fuelBurnrate * Time.deltaTime;
-            anim.SetBool("jett", true);
+            // anim.SetBool("jett", true);
             UpdateFuelSlider(); // Update the fuel slider
         }
         else
         {
-            anim.SetBool("jett", false);
+            // anim.SetBool("jett", false);
         }
 
         // Check if fuel is critically low
