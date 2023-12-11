@@ -264,18 +264,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  jumpPower: 5
+  jumpPower: 12
+  horizontalInput: 0
+  fallMultiplier: 2
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   wallLayer:
     serializedVersion: 2
     m_Bits: 512
-  LjoyStick: {fileID: 0}
-  RjoyStick: {fileID: 0}
-  JumpJoystick: {fileID: 0}
-  fallMultiplier: 20
-  horizontalInput: 0
+  lJoystick: {fileID: 0}
+  rJoystick: {fileID: 0}
+  dashJoystick: {fileID: 0}
+  jumpJoystick: {fileID: 0}
+  dashCooldown: 1
+  currentDashCooldown: 0
+  dashDistance: 5
 --- !u!70 &7571807567336220476
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

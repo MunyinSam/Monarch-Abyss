@@ -178,7 +178,7 @@ TextureImporter:
         serializedVersion: 2
         x: 64
         y: 6
-        width: 31
+        width: 38
         height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -199,8 +199,8 @@ TextureImporter:
         serializedVersion: 2
         x: 224
         y: 6
-        width: 31
-        height: 53
+        width: 38
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,8 +220,8 @@ TextureImporter:
         serializedVersion: 2
         x: 388
         y: 6
-        width: 28
-        height: 51
+        width: 38
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,8 +241,8 @@ TextureImporter:
         serializedVersion: 2
         x: 548
         y: 6
-        width: 30
-        height: 50
+        width: 38
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,8 +262,8 @@ TextureImporter:
         serializedVersion: 2
         x: 708
         y: 6
-        width: 29
-        height: 50
+        width: 38
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,8 +283,8 @@ TextureImporter:
         serializedVersion: 2
         x: 868
         y: 6
-        width: 27
-        height: 52
+        width: 38
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,10 +302,10 @@ TextureImporter:
       name: Idle_6
       rect:
         serializedVersion: 2
-        x: 1026
-        y: 6
-        width: 29
-        height: 53
+        x: 1027
+        y: 5
+        width: 38
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,7 +325,7 @@ TextureImporter:
         serializedVersion: 2
         x: 1186
         y: 6
-        width: 29
+        width: 38
         height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -336,6 +336,27 @@ TextureImporter:
       bones: []
       spriteID: cbf6c11187c1c5049ba7a2147ae4a23e
       internalID: 3384493420599841878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1280
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc42e5645d4faff44a33693f801ab305
+      internalID: -423793350
       vertices: []
       indices: 
       edges: []
@@ -359,6 +380,7 @@ TextureImporter:
       Idle_5: -2834552850196481573
       Idle_6: 3278449094680734212
       Idle_7: 3384493420599841878
+      Idle_8: -423793350
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,17 +10,27 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
+    [SerializeField] private float horizontalInput;
+    [SerializeField] private float fallMultiplier = 20;
+
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
-    [SerializeField] private MoveJoyStick LjoyStick;
-    [SerializeField] private MoveJoyStick RjoyStick;
-    [SerializeField] private MoveJoyStick JumpJoystick;
-    [SerializeField] private float fallMultiplier = 20;
+
+    [SerializeField] private MoveJoyStick lJoystick;
+    [SerializeField] private MoveJoyStick rJoystick;
+    [SerializeField] private MoveJoyStick dashJoystick;
+    [SerializeField] private MoveJoyStick jumpJoystick;
+
+    [SerializeField] private float dashCooldown = 1f; // เวลาระหว่างการ dash
+    [SerializeField] private float currentDashCooldown = 0;
+    [SerializeField] private float dashDistance = 5f; // ระยะทางที่จะ Dash
+    private Vector3 dashDirection;
+    private Vector3 dashDestination;
+
     private Rigidbody2D body;
     private Animator anim;
     private CapsuleCollider2D capsuleCollider;
-    private float wallJumpCooldown;
-    [SerializeField] private float horizontalInput;
+    
 
     private void Awake()
     {
@@ -31,10 +42,12 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        currentDashCooldown += Time.deltaTime;
+
         GetInput();
         RotateCharacter();
 
-        if (JumpJoystick.isPress){
+        if (jumpJoystick.isPress){
                 Jump();
         }
     }
@@ -61,11 +74,11 @@ public class Movement : MonoBehaviour
 
     private void GetInput()
     {
-        if(LjoyStick.isPress )
+        if(lJoystick.isPress )
         {
             horizontalInput = -1;
         }
-        else if(RjoyStick.isPress)
+        else if(rJoystick.isPress)
         {
             horizontalInput = 1;
         }
@@ -77,8 +90,54 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate(){
         Move();
+        Dash();
         GravityCheck();
     }
+
+    private void Dash()
+    {
+        if ((currentDashCooldown >= dashCooldown && Input.GetKeyDown(KeyCode.LeftShift)) || (currentDashCooldown >= dashCooldown && dashJoystick.isPress))
+        {
+            // Set the dash direction based on the character's facing direction
+            dashDirection = new Vector2(horizontalInput, 0);
+
+            // Normalize the dash direction to ensure consistent speed
+            dashDirection.Normalize();
+
+            // Calculate the dash destination position
+            dashDestination = transform.position + dashDirection * dashDistance;
+
+            // Disable gravity during the dash
+            body.gravityScale = 0;
+
+            // Move the character to the dash destination
+            StartCoroutine(PerformDash());
+
+            // Reset the dash cooldown
+            currentDashCooldown = 0;
+        }
+    }
+
+    private IEnumerator PerformDash()
+    {
+        float startTime = Time.time;
+        float journeyLength = Vector3.Distance(transform.position, dashDestination);
+
+        while (Vector3.Distance(transform.position, dashDestination) > 0.1f)
+        {
+            float distCovered = (Time.time - startTime) * dashDistance;
+            float fractionOfJourney = distCovered / journeyLength;
+
+            // Move the character smoothly towards the dash destination
+            transform.position = Vector3.Lerp(transform.position, dashDestination, fractionOfJourney);
+
+            yield return null;
+        }
+
+        // Re-enable gravity after the dash is complete
+        body.gravityScale = 1;
+    }
+
 
     private void GravityCheck()
     {
