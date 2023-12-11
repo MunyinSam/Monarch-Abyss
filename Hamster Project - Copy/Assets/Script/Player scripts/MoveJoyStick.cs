@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class MoveJoyStick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public bool isPress = false;
-    public int direction;
     public void OnPointerDown(PointerEventData eventData)
     {
         isPress = true;
