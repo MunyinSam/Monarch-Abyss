@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour
     {
         //Grab references for rigidbody and animator from object
         body = GetComponent<Rigidbody2D>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         boxCollider = GetComponent<CapsuleCollider2D>();
     }
 
@@ -54,10 +54,22 @@ public class Movement : MonoBehaviour
 
     private void RotateCharacter()
     {
-        if (horizontalInput > 0.01f)
+        if (horizontalInput > 0.01f){
             transform.localScale = Vector3.one;
-        else if (horizontalInput < -0.01f)
+            RunningAnim();
+        }
+        else if (horizontalInput < -0.01f){
             transform.localScale = new Vector3(-1, 1, 1);
+            RunningAnim();
+        }
+        else{
+            anim.SetBool("isRunning", false);
+        }
+    }
+
+    private void RunningAnim()
+    {
+        anim.SetBool("isRunning", true);
     }
 
     private void GetInput()
