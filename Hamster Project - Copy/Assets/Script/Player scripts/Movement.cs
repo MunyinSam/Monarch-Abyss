@@ -13,9 +13,11 @@ public class Movement : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private MoveJoyStick LjoyStick;
     [SerializeField] private MoveJoyStick RjoyStick;
+    [SerializeField] private MoveJoyStick JumpJoystick;
+    [SerializeField] private float fallMultiplier = 20;
     private Rigidbody2D body;
     private Animator anim;
-    private CapsuleCollider2D boxCollider;
+    private CapsuleCollider2D capsuleCollider;
     private float wallJumpCooldown;
     [SerializeField] private float horizontalInput;
 
@@ -24,7 +26,7 @@ public class Movement : MonoBehaviour
         //Grab references for rigidbody and animator from object
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        boxCollider = GetComponent<CapsuleCollider2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
     private void Update()
@@ -32,24 +34,9 @@ public class Movement : MonoBehaviour
         GetInput();
         RotateCharacter();
 
-        //Wall jump logic
-        if (wallJumpCooldown > 0.2f)
-        {
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
-
-            if (onWall() && !isGrounded())
-            {
-                body.gravityScale = 0;
-                body.velocity = Vector2.zero;
-            }
-            else
-                body.gravityScale = 7;
-
-            if (Input.GetKey(KeyCode.Space))
+        if (JumpJoystick.isPress){
                 Jump();
         }
-        else
-            wallJumpCooldown += Time.deltaTime;
     }
 
     private void RotateCharacter()
@@ -74,7 +61,6 @@ public class Movement : MonoBehaviour
 
     private void GetInput()
     {
-        Debug.Log("Left: " + LjoyStick.isPress + "\n" + "Right: " + RjoyStick.isPress);
         if(LjoyStick.isPress )
         {
             horizontalInput = -1;
@@ -91,35 +77,39 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate(){
         Move();
+        GravityCheck();
     }
 
-        private void Move()
+    private void GravityCheck()
     {
-        
-        if(horizontalInput != 0){
-            Debug.Log("move : " + horizontalInput);
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        if (!isGrounded())
+        {
+            Vector2 gravity = new Vector2(0, -Physics2D.gravity.y);
+            body.velocity -= gravity * fallMultiplier * Time.deltaTime;
         }
     }
+
+    private void Move()
+    {
+        if (horizontalInput != 0)
+        {
+            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        }
+        else
+        {
+            // If no input, gradually slow down the character to simulate friction
+            body.velocity = new Vector2(Mathf.Lerp(body.velocity.x, 0f, Time.fixedDeltaTime * 10f), body.velocity.y);
+        }
+    }
+
 
     private void Jump()
     {
         if (isGrounded())
         {
-            body.velocity = new Vector2(body.velocity.x, jumpPower);
-            //anim.SetTrigger("jump");
-        }
-        else if (onWall() && !isGrounded())
-        {
-            if (horizontalInput == 0)
-            {
-                body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, 0);
-                transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            }
-            else
-                body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
-
-            wallJumpCooldown = 0;
+            Debug.Log("Jump!!!");
+            body.velocity = new Vector2(body.velocity.x , jumpPower);
+            anim.SetTrigger("jump");
         }
     }
 
@@ -127,17 +117,12 @@ public class Movement : MonoBehaviour
 
     private bool isGrounded()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
-        return raycastHit.collider != null;
-    }
-    private bool onWall()
-    {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(capsuleCollider.bounds.center, capsuleCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return raycastHit.collider != null;
     }
 
     public bool canAttack()
     {
-        return horizontalInput == 0 && isGrounded() && !onWall();
+        return horizontalInput == 0 && isGrounded();
     }
 }
