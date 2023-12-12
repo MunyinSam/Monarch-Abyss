@@ -25,6 +25,7 @@ public class PlayerAttack : MonoBehaviour
         if (CanAttack() && Input.GetKeyDown(KeyCode.Space))
         {
             Attack();
+            Debug.Log("Attacking");
         }
 
         
@@ -61,20 +62,20 @@ public class PlayerAttack : MonoBehaviour
         print("Player attacking!");
     }
 
-    /*private void DealDamageToEnemy()
+    private void DealDamageToEnemy()
     {
         
         GameObject enemy = FindClosestEnemy();
         if (enemy != null)
         {
-            EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
-            if (enemyHealth != null)
+            Health Health = enemy.GetComponent<Health>();
+            if (Health != null)
             {
-                enemyHealth.TakeDamage(damageAmount);
+                Health.TakeDamage(damageAmount);
             }
         }
     }
-*/
+
     private GameObject FindClosestEnemy()
     {
         

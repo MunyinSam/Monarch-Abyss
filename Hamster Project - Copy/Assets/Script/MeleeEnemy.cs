@@ -1,4 +1,4 @@
-/*
+
 using UnityEngine;
 
 public class MeleeEnemy : MonoBehaviour
@@ -52,10 +52,23 @@ public class MeleeEnemy : MonoBehaviour
              new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
              0, Vector2.left, 0, playerLayer);
 
-         if (hit.collider != null)
-             playerHealth = hit.transform.GetComponent<Health>();
+        
 
-         return hit.collider != null;
+         if (hit.collider != null)
+        {
+            playerHealth = hit.transform.GetComponent<PlayerHealth>();
+            Debug.Log("Hit object: " + hit.collider.name);
+            Debug.Log("Hit point: " + hit.point);
+            Debug.Log("Hit normal: " + hit.normal);
+        }
+            
+
+        else
+        {
+            Debug.Log("No hit");
+        }
+
+        return hit.collider != null;
      }
      private void OnDrawGizmos()
      {
@@ -70,4 +83,3 @@ public class MeleeEnemy : MonoBehaviour
              playerHealth.TakeDamage(damage);
      }
  }
-*/

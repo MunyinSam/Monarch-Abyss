@@ -40,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
         else
         {
 
-            //anim.SetTrigger("Playerdeath");
+            anim.SetTrigger("Playerdeath");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
 
