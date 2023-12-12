@@ -26,15 +26,15 @@ public class BossController : MonoBehaviour
         if (timer <= 0f)
         {
             TriggerRandomAnimation();
-            timer = 2f; // Reset the timer
+            timer = 5f; // Reset the timer
         }
     }
 
     void TriggerRandomAnimation()
     {
         // Define an array of trigger names
-        string[] animationTriggers = { "walking", "attack", "spell", "cast", "spellno", "castno", "attackno" };
-        //string[] animationTriggers = {"spellno"};
+        string[] animationTriggers = { "attack", "spell", "cast", "spellno", "castno", "attackno" };
+        //string[] animationTriggers = {"cast"};
 
         // Get a random index
         int randomIndex = Random.Range(0, animationTriggers.Length);
@@ -48,7 +48,7 @@ public class BossController : MonoBehaviour
             if (DefaultPos)
             {
                 Debug.Log("At default");
-                Vector2 newPosition = new Vector2(294, 104);
+                Vector2 newPosition = new Vector2(305, 104);
                 Debug.Log("New position: " + newPosition);
                 transform.parent.position = newPosition; // Move the parent GameObject
                 FlipSprite();
@@ -184,7 +184,7 @@ public class BossController : MonoBehaviour
     IEnumerator CastNoAnimation()
     {
         // Instantiate a prefab similar to spell instance
-        GameObject castNoInstance = Instantiate(castNoPrefab, new Vector2(transform.position.x, transform.position.y + 5f), Quaternion.identity);
+        GameObject castNoInstance = Instantiate(castNoPrefab, new Vector2(transform.position.x, transform.position.y+1.3f), Quaternion.identity);
         yield return new WaitForSeconds(1f);
         Destroy(castNoInstance);
     }
