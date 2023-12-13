@@ -58,7 +58,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         
-        //DealDamageToEnemy();
+        DealDamageToEnemy();
         print("Player attacking!");
     }
 
