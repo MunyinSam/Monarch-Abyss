@@ -8,6 +8,6 @@ public class NextScene2 : MonoBehaviour
     // Start is called before the first frame update
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync(5);
+        SceneManager.LoadSceneAsync(4);
     }
 }
