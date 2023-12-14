@@ -8,3 +8,6 @@ Project Members
 - Guy [Designer/ Programmer] : Responsible for UIs and its scripts (calling the movement scripts)
 
 * Note : We work on the branch Sam (not main) ***
+
+Miro: https://miro.com/app/board/uXjVNFeO99g=/
+Game Download: https://drive.google.com/drive/folders/14Lri5jJxcgroKlANh5XL8RqFkk_VAEjT
