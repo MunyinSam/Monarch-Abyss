@@ -9,7 +9,6 @@ Project Members
 
 * Note : We work on the branch Sam (not main) ***
 
-Updated Miro : https://miro.com/app/board/uXjVNCBP3XY=/
-Miro: https://miro.com/app/board/uXjVNFeO99g=/
+Miro Link: https://miro.com/app/board/uXjVNFeO99g=/?share_link_id=443098103170
 
 Game Download: https://drive.google.com/drive/folders/14Lri5jJxcgroKlANh5XL8RqFkk_VAEjT
