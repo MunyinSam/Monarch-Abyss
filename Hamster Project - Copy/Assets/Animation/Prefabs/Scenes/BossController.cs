@@ -33,9 +33,9 @@ public class BossController : MonoBehaviour
     void TriggerRandomAnimation()
     {
         // Define an array of trigger names
-        //string[] animationTriggers = { "attack", "spell", "cast", "spellno", "castno", "attackno" };
+        string[] animationTriggers = { "attack", "spell", "cast", "spellno", "castno", "attackno" };
 
-        string[] animationTriggers = {"attackno"};
+        //string[] animationTriggers = {"attackno"};
 
         // Get a random index
         int randomIndex = Random.Range(0, animationTriggers.Length);
