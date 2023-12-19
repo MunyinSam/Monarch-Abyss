@@ -8,7 +8,12 @@ public class Dash : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Button dashButton; // ปุ่ม Dash
     [SerializeField] private float dashDistance = 5f; // ระยะทางที่จะ Dash
+    private Rigidbody2D rb;
     private bool isDashing = false;
+
+    private void Awake(){
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void Start()
     {
@@ -16,13 +21,13 @@ public class Dash : MonoBehaviour
 
         if (dashButton != null)
         {
-            dashButton.onClick.AddListener(DashFromUI);
+            // dashButton.onClick.AddListener(DashFromUI);
         }
     }
 
     private void Update()
     {
-        if (CanDash() && Input.GetKeyDown(KeyCode.Space))
+        if (CanDash() && Input.GetKeyDown(KeyCode.LeftShift))
         {
             dash();
         }
@@ -52,19 +57,10 @@ public class Dash : MonoBehaviour
     Vector3 dashDirection = transform.forward;
     Vector3 dashDestination = transform.position + dashDirection * dashDistance;
 
-    // ให้ใช้ Rigidbody (หากมี) เพื่อเปลี่ยนตำแหน่งของ Object ได้ถูกต้อง
-    Rigidbody rb = GetComponent<Rigidbody>();
-    if (rb != null)
-    {
-        rb.MovePosition(dashDestination);
-    }
-    else
-    {
-        transform.position = dashDestination;
-    }
-
+    rb.MovePosition(dashDestination);
+    
     isDashing = true;
-    currentCooldown = dashCooldown;
+    // currentCooldown = dashCooldown;
     print("dash");
 }
 

@@ -176,12 +176,12 @@ TextureImporter:
       name: Run_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 160
-        height: 111
+        x: 58
+        y: 6
+        width: 39
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,12 +197,12 @@ TextureImporter:
       name: Run_1
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
-        width: 160
-        height: 111
+        x: 217
+        y: 6
+        width: 40
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: Run_2
       rect:
         serializedVersion: 2
-        x: 320
-        y: 0
-        width: 160
-        height: 111
+        x: 376
+        y: 6
+        width: 42
+        height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -239,12 +239,12 @@ TextureImporter:
       name: Run_3
       rect:
         serializedVersion: 2
-        x: 480
-        y: 0
-        width: 160
-        height: 111
+        x: 537
+        y: 15
+        width: 42
+        height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,12 +260,12 @@ TextureImporter:
       name: Run_4
       rect:
         serializedVersion: 2
-        x: 640
-        y: 0
-        width: 160
-        height: 111
+        x: 692
+        y: 6
+        width: 45
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -281,12 +281,12 @@ TextureImporter:
       name: Run_5
       rect:
         serializedVersion: 2
-        x: 800
-        y: 0
-        width: 160
-        height: 111
+        x: 856
+        y: 6
+        width: 41
+        height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -302,12 +302,12 @@ TextureImporter:
       name: Run_6
       rect:
         serializedVersion: 2
-        x: 960
-        y: 0
-        width: 160
-        height: 111
+        x: 1016
+        y: 6
+        width: 41
+        height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -323,18 +323,18 @@ TextureImporter:
       name: Run_7
       rect:
         serializedVersion: 2
-        x: 1120
-        y: 0
-        width: 160
-        height: 111
+        x: 1177
+        y: 12
+        width: 40
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab383eb7b2123ed4c83fcb6d708d3f9f
+      spriteID: 17ecccc4640b47c4583418492c2c4d93
       internalID: 8676454946275842879
       vertices: []
       indices: 
